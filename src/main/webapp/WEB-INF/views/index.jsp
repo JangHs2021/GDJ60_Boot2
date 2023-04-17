@@ -5,8 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="/css/index.css">
 </head>
 <body>
 	<h1>Index Page</h1>
+	
+	<img alt="" src="/images/winter.jpg">
+	
+	<script src="/js/index.js"></script>
 </body>
 </html>

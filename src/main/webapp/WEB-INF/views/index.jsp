@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/css/index.css">
+<link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
 	<h1>Index Page</h1>

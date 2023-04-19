@@ -52,13 +52,15 @@ public class NoticeController {
 		return mv;
 	}
 	
-//	@PostMapping(value = "add")
-//	public ModelAndView setInsert() throws Exception {
-//		ModelAndView mv = new ModelAndView();
-//		
-//		mv.setViewName("board/add");
-//		
-//		return mv;
-//	}
+	@PostMapping(value = "add")
+	public ModelAndView setInsert(NoticeVO noticeVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		int result = noticeService.setInsert(noticeVO);
+		
+		mv.setViewName("redirect:./list");
+		
+		return mv;
+	}
 	
 }

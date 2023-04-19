@@ -31,7 +31,7 @@ public class NoticeService implements BoardService{
 
 	@Override
 	public int setInsert(BoardVO boardVO) throws Exception {
-		return 0;
+		return noticeDAO.setInsert(boardVO);
 	}
 
 	@Override

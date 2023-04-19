@@ -50,7 +50,7 @@
                                         <label for="content">Content</label>
                                         <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                                     </div>                            
-                                    <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button></div>
+                                    <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="button">Submit</button></div>
                                 </form>
                             </div>
                         </div>
@@ -87,5 +87,7 @@
 	<!-- Footer -->
     <c:import url="../temp/footer.jsp"></c:import>
     <!-- Footer -->
+    
+    <script type="text/javascript" src="/js/boardForm.js"></script>
 </body>
 </html>

@@ -36,9 +36,9 @@
   		WHERE NUM = #{num}
   	</select>
   	
-  	<insert id="setInsert" parameterType="BoardVO">
-  		INSERT INTO NOTICE (TITLE, CONTENT, WRITER, REGDATE, HIT)
-  		VALUES (#{title}, #{content}, #{writer}, now(), 0)
+  	<insert id="setInsert" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="num">
+  		INSERT INTO NOTICE (NUM, TITLE, CONTENT, WRITER, REGDATE, HIT)
+  		VALUES (#{num}, #{title}, #{content}, #{writer}, now(), 0)
   	</insert>
   	
   	<update id="setUpdate" parameterType="BoardVO">

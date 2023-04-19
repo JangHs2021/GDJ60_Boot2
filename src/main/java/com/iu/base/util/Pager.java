@@ -16,6 +16,7 @@ public class Pager {
 	private Long totalPage;
 	private Long startNum;
 	private Long lastNum;
+	
 	private boolean before;
 	private boolean after;
 	
@@ -61,7 +62,6 @@ public class Pager {
 		if(this.page == null || this.page == 0) {
 			this.page = 1L;
 		}
-		
 		return this.page;
 	}
 	
@@ -77,5 +77,12 @@ public class Pager {
 			this.perBlock = 5L;
 		}
 		return perBlock;
+	}
+	
+	public String getSearch() {
+		if (search == null) {
+			search = "";
+		}
+		return search;
 	}
 }

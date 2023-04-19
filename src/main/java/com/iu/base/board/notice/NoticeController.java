@@ -6,14 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.base.board.BoardVO;
 import com.iu.base.util.Pager;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping("/notice/*")
+@Slf4j
 public class NoticeController {
 
 	@Autowired
@@ -27,6 +32,8 @@ public class NoticeController {
 	@GetMapping(value = "list")
 	public ModelAndView getList(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		log.info("search : {}", pager.getSearch());
+		log.info("kind : {}", pager.getKind());
 		
 		List<BoardVO> ar = noticeService.getList(pager);
 		
@@ -35,4 +42,23 @@ public class NoticeController {
 		
 		return mv;
 	}
+	
+	@GetMapping(value = "add")
+	public ModelAndView setInsert() throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("board/add");
+		
+		return mv;
+	}
+	
+//	@PostMapping(value = "add")
+//	public ModelAndView setInsert() throws Exception {
+//		ModelAndView mv = new ModelAndView();
+//		
+//		mv.setViewName("board/add");
+//		
+//		return mv;
+//	}
+	
 }

@@ -55,25 +55,25 @@
 					<nav aria-label="Page navigation example">
 						<ul class="pagination  d-flex justify-content-center wow fadeIn" data-wow-delay="0.1s"">
 					 		<li class=" page-item ${pager.before ? 'disabled' : '' }">
-								<a class="page-link" href="#" aria-label="Previous" data-board-page="1">
+								<a class="page-link" href="./list?page=1" aria-label="Previous" data-board-page="1">
 									<span aria-hidden="true">&laquo;</span>
 								</a>
 							</li>
 							<li class="page-item ${pager.before ? 'disabled' : ''}">
-								<a class="page-link" href="#" aria-label="Previous" data-board-page="${pager.startNum-1}">
+								<a class="page-link" href="./list?page=${pager.startNum-1}" aria-label="Previous" data-board-page="${pager.startNum-1}">
 									<span aria-hidden="true">&lsaquo;</span>
 								</a>
 							</li>
 							<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-								<li class="page-item"><a class="page-link" href="#" data-board-page="${i}">${i}</a></li>
+								<li class="page-item"><a class="page-link" href="./list?page=${i}" data-board-page="${i}">${i}</a></li>
 							</c:forEach>
 							<li class="page-item ${pager.after eq false ? 'disabled' : ''}">
-								<a class="page-link" href="#" aria-label="Next" data-board-page="${pager.lastNum+1}">
+								<a class="page-link" href="./list?page=${pager.lastNum+1}" aria-label="Next" data-board-page="${pager.lastNum+1}">
 									<span aria-hidden="true">&rsaquo;</span>
 								</a>
 							</li>
 							<li class="page-item ${pager.after eq false ? 'disabled' : ''}">
-								<a class="page-link" href="#" aria-label="Next" data-board-page="${pager.totalPage}">
+								<a class="page-link" href="./list?page=${pager.totalPage}" aria-label="Next" data-board-page="${pager.totalPage}">
 									<span aria-hidden="true">&raquo;</span>
 								</a>
 							</li>
@@ -89,7 +89,7 @@
 					    <label for="kind" class="visually-hidden">Kind</label>
 					    <select class="form-select" name="kind" id="kind" aria-label="Default select example">
 						  <option value="title" ${pager.kind eq 'title'? 'selected':''}>Title</option>
-						  <option value="contents" ${pager.kind eq 'contents' ?'selected':''}>Contents</option>
+						  <option value="content" ${pager.kind eq 'content' ?'selected':''}>Content</option>
 						  <option value="writer" ${pager.kind eq 'writer'? 'selected':''}>Writer</option>
 						</select>
 					  </div>
@@ -104,6 +104,9 @@
 				</div>
         	</div>
         </section>
+        
+        <a class="btn btn-primary" href="./add">글쓰기</a>
+        
 	</main>
 	
 	<!-- Footer -->

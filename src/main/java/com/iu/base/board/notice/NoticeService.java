@@ -40,7 +40,7 @@ public class NoticeService implements BoardService{
 
 	@Override
 	public BoardVO getDetail(BoardVO boardVO) throws Exception {
-		return null;
+		return noticeDAO.getDetail(boardVO);
 	}
 
 	@Override
@@ -54,12 +54,14 @@ public class NoticeService implements BoardService{
 					BoardFileVO boardFileVO = new BoardFileVO();
 					boardFileVO.setFileName(fileName);
 					boardFileVO.setOriName(multipartFile.getOriginalFilename());
-					boardFileVO.setFileNum(boardVO.getNum());
+					boardFileVO.setNum(boardVO.getNum());
+					
+					result = noticeDAO.setBoardFileAdd(boardFileVO);
 				}
 			}
 		}
 		
-		return noticeDAO.setInsert(boardVO);
+		return result;
 	}
 
 	@Override
@@ -70,5 +72,10 @@ public class NoticeService implements BoardService{
 	@Override
 	public int setDelete(BoardVO boardVO) throws Exception {
 		return 0;
+	}
+
+	@Override
+	public BoardFileVO getFileDetail(BoardFileVO boardFileVO) throws Exception {
+		return noticeDAO.getFileDetail(boardFileVO);
 	}
 }

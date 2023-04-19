@@ -12,6 +12,7 @@
 <!-- css, favicon -->
 <c:import url="../temp/style.jsp"></c:import>
 <!-- css, favicon -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 </head>
 <body class="d-flex flex-column h-100">
 	<main class="flex-shrink-0">
@@ -94,5 +95,10 @@
     <!-- Footer -->
     
     <script type="text/javascript" src="/js/boardForm.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script>
+		$("#content").summernote();
+	</script>
 </body>
 </html>

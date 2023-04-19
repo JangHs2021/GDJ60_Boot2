@@ -22,4 +22,7 @@ public interface BoardService {
 		
 	// 글삭제
 	public int setDelete(BoardVO boardVO) throws Exception;
+	
+	// 파일조회
+	public BoardFileVO getFileDetail(BoardFileVO boardFileVO) throws Exception;
 }

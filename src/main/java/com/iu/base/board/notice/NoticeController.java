@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.base.board.BoardFileVO;
 import com.iu.base.board.BoardVO;
 import com.iu.base.util.Pager;
 
@@ -69,4 +70,27 @@ public class NoticeController {
 		return mv;
 	}
 	
+	@GetMapping(value = "detail")
+	public ModelAndView getDetail(NoticeVO noticeVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		noticeVO = (NoticeVO)noticeService.getDetail(noticeVO);
+		
+		mv.addObject("boardVO", noticeVO);
+		mv.setViewName("board/detail");
+		
+		return mv;
+	}
+	
+	@GetMapping(value = "fileDown")
+	public ModelAndView getFileDown(BoardFileVO boardFileVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		boardFileVO = noticeService.getFileDetail(boardFileVO);
+		
+		mv.addObject("boardFileVO", boardFileVO);
+		mv.setViewName("fileManager");
+		
+		return mv;
+	}
 }

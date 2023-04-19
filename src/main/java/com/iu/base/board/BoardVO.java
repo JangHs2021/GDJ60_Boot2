@@ -1,6 +1,9 @@
 package com.iu.base.board;
 
 import java.sql.Date;
+import java.util.List;
+
+import com.iu.base.board.notice.NoticeFileVO;
 
 import lombok.Data;
 import lombok.Getter;
@@ -16,4 +19,6 @@ public class BoardVO {
 	private String writer;
 	private Date regDate;
 	private Long hit;
+	private List<BoardFileVO> boardFileVOs;
+	
 }

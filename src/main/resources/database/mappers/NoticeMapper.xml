@@ -31,10 +31,29 @@
   		LIMIT #{startRow}, #{perPage}
   	</select>
   	
-  	<select id="getDetail" resultType="BoardVO" parameterType="BoardVO">
-  		SELECT * FROM NOTICE
-  		WHERE NUM = #{num}
+  	<select id="getDetail" parameterType="BoardVO" resultMap="getDetailResult">
+  		SELECT *
+		FROM NOTICE 
+			 LEFT JOIN
+			 NOTICEFILES 
+			 USING(NUM)
+		WHERE NUM = #{num}
   	</select>
+  
+ 	<resultMap type="NoticeVO" id="getDetailResult">
+  		<id column="num" property="num"/>
+  		<result column="title" property="title"/>
+  		<result column="writer" property="writer"/>
+  		<result column="content" property="content"/>
+  		<result column="regDate" property="regDate"/>
+  		<result column="hit" property="hit"/>
+  		
+  		<collection property="boardFileVOs" javaType="List" ofType="BoardFileVO">
+  			<id column="fileNum" property="fileNum"/>
+  			<result column="fileName" property="fileName"/>
+  			<result column="oriName" property="oriName"/>
+  		</collection>
+  	</resultMap>
   	
   	<insert id="setInsert" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="num">
   		INSERT INTO NOTICE (NUM, TITLE, CONTENT, WRITER, REGDATE, HIT)
@@ -50,6 +69,15 @@
   		DELETE FROM NOTICE WHERE NUM = #{num}
   	</delete>
   	
+  	<insert id="setBoardFileAdd" parameterType="BoardFileVO">
+  		INSERT INTO NOTICEFILES (NUM, FILENAME, ORINAME)
+  		VALUES(#{num}, #{fileName}, #{oriName})
+  	</insert>
+  	
+  	<select id="getFileDetail" parameterType="BoardFileVO" resultType="BoardFileVO">
+  		SELECT * FROM NOTICEFILES WHERE FILENUM = #{fileNum}
+  	</select>
+  
   </mapper>
 
 

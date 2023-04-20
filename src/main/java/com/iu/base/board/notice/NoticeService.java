@@ -2,10 +2,12 @@ package com.iu.base.board.notice;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.base.board.BoardFileVO;
@@ -18,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
+@Transactional(rollbackFor = Exception.class)
 public class NoticeService implements BoardService{
 
 	@Autowired
@@ -46,6 +49,13 @@ public class NoticeService implements BoardService{
 	@Override
 	public int setInsert(BoardVO boardVO, MultipartFile [] multipartFiles) throws Exception {
 		int result = noticeDAO.setInsert(boardVO);
+		
+		Random random = new Random();
+		int num = random.nextInt(1);
+		
+		if(num == 0) {
+			throw new Exception();
+		}
 		
 		if(multipartFiles != null) {
 			for(MultipartFile multipartFile : multipartFiles) {

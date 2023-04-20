@@ -2,6 +2,7 @@ package com.iu.base.board;
 
 import java.util.List;
 
+import com.iu.base.board.qna.QnaVO;
 import com.iu.base.util.Pager;
 
 public interface BoardDAO {
@@ -29,4 +30,6 @@ public interface BoardDAO {
 	
 	// 파일조회
 	public BoardFileVO getFileDetail(BoardFileVO boardFileVO) throws Exception;
+	
+	public int setRef(QnaVO qnaVO) throws Exception;
 }

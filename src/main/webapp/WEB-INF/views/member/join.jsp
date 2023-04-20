@@ -27,35 +27,41 @@
                         <div class="text-center mb-5">
                             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
                             <h1 class="fw-bolder">${board}</h1>
-                            <p class="lead fw-normal text-muted mb-0">${board} 등록</p>
+                            <p class="lead fw-normal text-muted mb-0">회원가입</p>
                         </div>
                         <div class="row gx-5 justify-content-center">
                             <div class="col-lg-8 col-xl-6">
-                                <form id="contactForm" action="./add" method="post" data-sb-form-api-token="API_TOKEN" enctype="multipart/form-data">
-                                    <!-- Title input-->
+                                <form id="contactForm" action="./join" method="post" data-sb-form-api-token="API_TOKEN">
+                                    <!-- UserName input-->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="title" name="title" type="text" placeholder="Enter Title..." data-sb-validations="required" />
-                                        <label for="title">Title</label>
+                                        <input class="form-control" id="userName" name="userName" type="text" placeholder="Enter UserName..." data-sb-validations="required" />
+                                        <label for="userName">UserName</label>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
-                                    <!-- writer input-->
+                                    <!-- PassWord input-->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="writer" name="writer" type="text" placeholder="Enter Title..." data-sb-validations="required,email" />
-                                        <label for="writer">Writer</label>
-                                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                                        <input class="form-control" id="passWord" name="passWord" type="password" placeholder="Enter PassWord..." data-sb-validations="required" />
+                                        <label for="passWord">PassWord</label>
+                                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
-                                    <!-- content input-->
+                                    <!-- Name input-->
                                     <div class="form-floating mb-3">
-                                        <textarea class="form-control" id="content" name="content" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                                        <label for="content">Content</label>
-                                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                                    </div>  
+                                        <input class="form-control" id="name" name="name" type="text" placeholder="Enter Name..." data-sb-validations="required" />
+                                        <label for="name">Name</label>
+                                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                                    </div>
+                                    <!-- Email input-->
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="email" name="email" type="text" placeholder="Enter Email..." data-sb-validations="required,email" />
+                                        <label for="email">Email</label>
+                                    </div>
+                                    <!-- Birth input-->
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="birth" name="birth" type="date" placeholder="Enter Birth..." data-sb-validations="required" />
+                                        <label for="birth">Birth</label>
+                                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                                    </div>
                                     
-                                    <div class="form-floating mb-3">
-                                    	<input type="file" name="boardFiles">
-                                    </div>
-                                                              
                                     <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="button">Submit</button></div>
                                 </form>
                             </div>

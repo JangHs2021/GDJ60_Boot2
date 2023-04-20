@@ -1,13 +1,10 @@
-package com.iu.base.board.notice;
+package com.iu.base.board.qna;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.base.board.BoardFileVO;
@@ -16,46 +13,35 @@ import com.iu.base.board.BoardVO;
 import com.iu.base.util.FileManager;
 import com.iu.base.util.Pager;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Service
-@Slf4j
-@Transactional(rollbackFor = Exception.class)
-public class NoticeService implements BoardService{
+public class QnaService implements BoardService {
 
 	@Autowired
-	private NoticeDAO noticeDAO;
+	private QnaDAO qnaDAO;
 	
 	@Autowired
 	private FileManager fileManager;
-
-	@Value("${app.upload.notice}")
+	
+	@Value("${app.upload.qna}")
 	private String path;
 	
 	@Override
 	public List<BoardVO> getList(Pager pager) throws Exception {
 		pager.makeStartRow();
 		
-		pager.makeNum(noticeDAO.getTotalCount(pager));
+		pager.makeNum(qnaDAO.getTotalCount(pager));
 		
-		return noticeDAO.getList(pager);
+		return qnaDAO.getList(pager);
 	}
 
 	@Override
 	public BoardVO getDetail(BoardVO boardVO) throws Exception {
-		return noticeDAO.getDetail(boardVO);
+		return qnaDAO.getDetail(boardVO);
 	}
-
+	
 	@Override
-	public int setInsert(BoardVO boardVO, MultipartFile [] multipartFiles) throws Exception {
-		int result = noticeDAO.setInsert(boardVO);
-		
-//		Random random = new Random();
-//		int num = random.nextInt(1);
-//		
-//		if(num == 0) {
-//			throw new Exception();
-//		}
+	public int setInsert(BoardVO boardVO, MultipartFile[] multipartFiles) throws Exception {
+		int result = qnaDAO.setInsert(boardVO);
 		
 		if(multipartFiles != null) {
 			for(MultipartFile multipartFile : multipartFiles) {
@@ -66,14 +52,13 @@ public class NoticeService implements BoardService{
 					boardFileVO.setOriName(multipartFile.getOriginalFilename());
 					boardFileVO.setNum(boardVO.getNum());
 					
-					result = noticeDAO.setBoardFileAdd(boardFileVO);
+					result = qnaDAO.setBoardFileAdd(boardFileVO);
 				}
 			}
 		}
-		
 		return result;
 	}
-
+	
 	@Override
 	public int setUpdate(BoardVO boardVO) throws Exception {
 		return 0;
@@ -86,6 +71,6 @@ public class NoticeService implements BoardService{
 
 	@Override
 	public BoardFileVO getFileDetail(BoardFileVO boardFileVO) throws Exception {
-		return noticeDAO.getFileDetail(boardFileVO);
+		return qnaDAO.getFileDetail(boardFileVO);
 	}
 }

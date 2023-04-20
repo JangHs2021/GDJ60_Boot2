@@ -31,4 +31,8 @@ public class MemberService {
 //		}
 		return memberDAO.getMemberLogin(memberVO);
 	}
+	
+	public MemberVO getMemberPage(MemberVO memberVO) throws Exception {
+		return memberDAO.getMemberLogin(memberVO);
+	}
 }

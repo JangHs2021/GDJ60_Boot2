@@ -84,4 +84,18 @@ public class MemberController {
 		
 		return mv;
 	}
+	
+	@GetMapping(value = "mypage")
+	public ModelAndView getMemberPage(HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		
+		memberVO = memberService.getMemberPage(memberVO);
+		
+		mv.addObject("memberVO", memberVO);
+		mv.setViewName("member/mypage");
+		
+		return mv;
+	}
 }

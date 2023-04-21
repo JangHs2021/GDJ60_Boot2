@@ -23,5 +23,50 @@
 			 console.log("error")
 		 }
 	 })
-	 
  }
+ 
+$("#passWord").blur(pwCheck);
+	
+function pwCheck(){
+	if($("#passWord").val() === "") {
+		console.log("필수 사항 입니다")
+	}
+}
+
+$("#passWordCheck").blur(pwCheck2);
+
+function pwCheck2(){
+	if($("#passWord").val() == $("#passWordCheck").val()) {
+		console.log("패스워드가 맞습니다")
+	} else {
+		console.log("패스워드가 틀렸습니다")
+	}
+}
+	 
+$("#name").blur(nameCheck);
+	
+function nameCheck(){
+	if($("#name").val() === "") {
+		console.log("필수 사항 입니다")
+	}
+}
+
+$("#email").blur(emailCheck);
+	
+function emailCheck(){
+	if($("#email").val() === "") {
+		console.log("필수 사항 입니다")
+	}
+}
+
+$("#birth").blur(birthCheck);
+	
+function birthCheck(){
+	if($("#birth").val() === "") {
+		console.log("필수 사항 입니다")
+	}
+}
+	
+
+ 
+ 

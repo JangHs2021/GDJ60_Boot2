@@ -106,19 +106,20 @@ public class MemberController {
 		return mv;
 	}
 	
+	@GetMapping(value = "admin")
+	public void getAdmin() throws Exception {
+	}
+	
 	@GetMapping(value = "idDuplicateCheck")
 	@ResponseBody
 	public boolean idDuplicateCheck(MemberVO memberVO) throws Exception {
 		memberVO = memberService.idDuplicateCheck(memberVO);
-		
-		log.debug("============== ID 중복 체크 ==============");
 		
 		boolean check = true;
 		
 		if(memberVO != null) {
 			check = false;
 		}
-		
 		return check;
 	}
 }

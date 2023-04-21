@@ -7,7 +7,7 @@
   	
   	<insert id="setMemberAdd" parameterType="MemberVO">
   		INSERT INTO MEMBER
-  		VALUES (#{userName}, #{passWord}, #{name}, #{email}, #{birth}, 1)
+  		VALUES (#{userName}, #{passWord}, #{name}, #{email}, #{birth}, #{enabled})
   	</insert>
   	
   	<insert id="setMemberRoleAdd" parameterType="MemberVO">

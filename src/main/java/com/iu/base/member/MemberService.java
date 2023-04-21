@@ -10,7 +10,7 @@ public class MemberService {
 	private MemberDAO memberDAO;
 	
 	public int setMemberAdd(MemberVO memberVO) throws Exception {
-		
+		memberVO.setEnabled(true);
 		int result = memberDAO.setMemberAdd(memberVO);
 		
 		result = memberDAO.setMemberRoleAdd(memberVO);

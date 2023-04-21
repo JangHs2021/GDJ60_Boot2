@@ -10,4 +10,6 @@ public interface MemberDAO {
 	public int setMemberRoleAdd(MemberVO memberVO) throws Exception;
 	
 	public MemberVO getMemberLogin(MemberVO memberVO) throws Exception;
+	
+	public MemberVO idDuplicateCheck(MemberVO memberVO) throws Exception;
 }

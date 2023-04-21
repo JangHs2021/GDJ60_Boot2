@@ -1,5 +1,8 @@
 package com.iu.base.member;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,10 +13,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping(value = "/member/*")
+@Slf4j
 public class MemberController {
 
 	@Autowired
@@ -97,5 +104,21 @@ public class MemberController {
 		mv.setViewName("member/mypage");
 		
 		return mv;
+	}
+	
+	@GetMapping(value = "idDuplicateCheck")
+	@ResponseBody
+	public boolean idDuplicateCheck(MemberVO memberVO) throws Exception {
+		memberVO = memberService.idDuplicateCheck(memberVO);
+		
+		log.debug("============== ID 중복 체크 ==============");
+		
+		boolean check = true;
+		
+		if(memberVO != null) {
+			check = false;
+		}
+		
+		return check;
 	}
 }

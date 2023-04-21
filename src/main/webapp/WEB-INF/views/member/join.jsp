@@ -32,36 +32,42 @@
                         <div class="row gx-5 justify-content-center">
                             <div class="col-lg-8 col-xl-6">
                                 <form id="contactForm" action="./join" method="post" data-sb-form-api-token="API_TOKEN">
-                                    <!-- UserName input-->
+                                    <!-- UserName input -->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="userName" name="userName" type="text" placeholder="Enter UserName..." data-sb-validations="required" />
+                                        <input class="form-control" id="userName" name="userName" type="text" placeholder="Enter UserName..." required="required" data-sb-validations="required" />
                                         <label for="userName">UserName</label>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
-                                    <!-- PassWord input-->
+                                    <!-- PassWord input -->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="passWord" name="passWord" type="password" placeholder="Enter PassWord..." data-sb-validations="required" />
                                         <label for="passWord">PassWord</label>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
-                                    <!-- Name input-->
+                                    <!-- PassWord input -->
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control" id="passWordCheck" name="passWordCheck" type="password" placeholder="Enter PassWord..." data-sb-validations="required" />
+                                        <label for="passWordCheck">PassWord Check</label>
+                                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                                    </div>
+                                    <!-- Name input -->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="name" name="name" type="text" placeholder="Enter Name..." data-sb-validations="required" />
                                         <label for="name">Name</label>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
-                                    <!-- Email input-->
+                                    <!-- Email input -->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="email" name="email" type="text" placeholder="Enter Email..." data-sb-validations="required,email" />
                                         <label for="email">Email</label>
                                     </div>
-                                    <!-- Birth input-->
+                                    <!-- Birth input -->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="birth" name="birth" type="date" placeholder="Enter Birth..." data-sb-validations="required" />
                                         <label for="birth">Birth</label>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
-                                    
+                                    <!-- Submit Button -->
                                     <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="button">Submit</button></div>
                                 </form>
                             </div>
@@ -103,6 +109,7 @@
     <script type="text/javascript" src="/js/boardForm.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script type="text/javascript" src="../js/joinFormCheck.js"></script>
     <script>
 		$("#content").summernote();
 	</script>

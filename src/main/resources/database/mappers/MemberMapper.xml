@@ -42,4 +42,8 @@
   		</collection>
   	</resultMap>
   	
+  	<select id="idDuplicateCheck" resultType="MemberVO" parameterType="MemberVO">
+  		SELECT USERNAME FROM MEMBER WHERE USERNAME = #{userName}
+  	</select>
+  	
   </mapper>

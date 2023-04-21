@@ -35,4 +35,8 @@ public class MemberService {
 	public MemberVO getMemberPage(MemberVO memberVO) throws Exception {
 		return memberDAO.getMemberLogin(memberVO);
 	}
+	
+	public MemberVO idDuplicateCheck(MemberVO memberVO) throws Exception {
+		return memberDAO.idDuplicateCheck(memberVO);
+	}
 }

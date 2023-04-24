@@ -2,6 +2,8 @@ package com.iu.base.board.qna;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,7 +54,7 @@ public class QnaController {
 	}
 	
 	@GetMapping(value = "add")
-	public ModelAndView setInsert() throws Exception {
+	public ModelAndView setInsert(@ModelAttribute BoardVO boardVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("board/add");

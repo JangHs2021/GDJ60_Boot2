@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,33 +32,37 @@
                         </div>
                         <div class="row gx-5 justify-content-center">
                             <div class="col-lg-8 col-xl-6">
-                                <form id="contactForm" action="./add" method="post" data-sb-form-api-token="API_TOKEN" enctype="multipart/form-data">
-                                    <!-- Title input-->
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="title" name="title" type="text" placeholder="Enter Title..." data-sb-validations="required" />
-                                        <label for="title">Title</label>
-                                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                                    </div>
-                                    <!-- writer input-->
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="writer" name="writer" type="text" placeholder="Enter Title..." data-sb-validations="required,email" />
-                                        <label for="writer">Writer</label>
-                                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                                    </div>
-                                    <!-- content input-->
-                                    <div class="form-floating mb-3">
-                                        <textarea class="form-control" id="content" name="content" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
-                                        <label for="content">Content</label>
-                                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                                    </div>  
-                                    
-                                    <div class="form-floating mb-3">
-                                    	<input type="file" name="boardFiles">
-                                    </div>
-                                                              
-                                    <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="button">Submit</button></div>
-                                </form>
+                                <%-- <form id="contactForm" action="./add" method="post" data-sb-form-api-token="API_TOKEN" enctype="multipart/form-data"> --%>
+                            	<form:form id="contactForm" modelAttribute="boardVO" action="./add" method="post" data-sb-form-api-token="API_TOKEN" enctype="multipart/form-data">
+	                                    <!-- Title input-->
+	                                    <div class="form-floating mb-3">
+	                                        <!-- <input class="form-control" id="title" name="title" type="text" placeholder="Enter Title..." data-sb-validations="required" /> -->
+	                                        <form:input path="title" id="title" cssClass="form-control"/>
+	                                        <label for="title">Title</label>
+	                                        <form:errors path="title"></form:errors>
+	                                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+	                                    </div>
+	                                    <!-- writer input-->
+	                                    <div class="form-floating mb-3">
+	                                        <!-- <input class="form-control" id="writer" name="writer" type="text" placeholder="Enter Title..." data-sb-validations="required,email" /> -->
+	                                        <form:input path="writer" id="writer" cssClass="form-control"/>
+	                                        <label for="writer">Writer</label>
+	                                        <form:errors path="writer"></form:errors>
+	                                    </div>
+	                                    <!-- content input-->
+	                                    <div class="form-floating mb-3">
+	                                        <textarea class="form-control" id="content" name="content" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+	                                        <label for="content">Content</label>
+	                                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+	                                    </div>  
+	                                    
+	                                    <div class="form-floating mb-3">
+	                                    	<input type="file" name="boardFiles">
+	                                    </div>
+	                                                              
+	                                    <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button></div>
+                                	</form:form>   
+                                <%-- </form> --%>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,35 +32,45 @@
                         </div>
                         <div class="row gx-5 justify-content-center">
                             <div class="col-lg-8 col-xl-6">
-                                <form id="contactForm" action="./join" method="post" data-sb-form-api-token="API_TOKEN">
+                                <form:form id="contactForm" modelAttribute="memberVO" action="./join" method="post" data-sb-form-api-token="API_TOKEN"> 
                                     <!-- UserName input -->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="userName" name="userName" type="text" placeholder="Enter UserName..." required="required" data-sb-validations="required" />
+                                    	<form:input path="userName" id="userName" cssClass="form-control"/>
+                                        <!-- <input class="form-control" id="userName" name="userName" type="text" placeholder="Enter UserName..." required="required" data-sb-validations="required" /> -->
                                         <label for="userName">UserName</label>
+                                        <form:errors path="userName"></form:errors>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
                                     <!-- PassWord input -->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="passWord" name="passWord" type="password" placeholder="Enter PassWord..." data-sb-validations="required" />
+                                   		<form:password path="passWord" id="passWord" cssClass="form-control"/>
+                                        <!-- <input class="form-control" id="passWord" name="passWord" type="password" placeholder="Enter PassWord..." data-sb-validations="required" /> -->
                                         <label for="passWord">PassWord</label>
+                                        <form:errors path="passWord"></form:errors>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
                                     <!-- PassWord input -->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="passWordCheck" name="passWordCheck" type="password" placeholder="Enter PassWord..." data-sb-validations="required" />
+                                    	<form:password path="passWord" id="passWord" cssClass="form-control"/>
+                                        <!-- <input class="form-control" id="passWordCheck" name="passWordCheck" type="password"/> -->
                                         <label for="passWordCheck">PassWord Check</label>
+                                        <form:errors path="passWord"></form:errors>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
                                     <!-- Name input -->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="name" name="name" type="text" placeholder="Enter Name..." data-sb-validations="required" />
+                                    	<form:input path="name" id="name" cssClass="form-control"/>
+                                        <!-- <input class="form-control" id="name" name="name" type="text" placeholder="Enter Name..." data-sb-validations="required" /> -->
                                         <label for="name">Name</label>
+                                        <form:errors path="name"></form:errors>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
                                     <!-- Email input -->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="email" name="email" type="text" placeholder="Enter Email..." data-sb-validations="required,email" />
+                                    	<form:input path="email" id="email" cssClass="form-control"/>
+                                        <!-- <input class="form-control" id="email" name="email" type="text" placeholder="Enter Email..." data-sb-validations="required,email" /> -->
                                         <label for="email">Email</label>
+                                        <form:errors path="email"></form:errors>
                                     </div>
                                     <!-- Birth input -->
                                     <div class="form-floating mb-3">
@@ -68,8 +79,8 @@
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
                                     <!-- Submit Button -->
-                                    <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="button">Submit</button></div>
-                                </form>
+                                    <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button></div>
+                                </form:form>
                             </div>
                         </div>
                     </div>
@@ -109,7 +120,7 @@
     <script type="text/javascript" src="/js/boardForm.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-    <script type="text/javascript" src="../js/joinFormCheck.js"></script>
+    <!-- <script type="text/javascript" src="../js/joinFormCheck.js"></script> -->
     <script>
 		$("#content").summernote();
 	</script>

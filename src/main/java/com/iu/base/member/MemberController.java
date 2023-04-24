@@ -7,14 +7,19 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.iu.base.board.BoardVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,7 +32,7 @@ public class MemberController {
 	private MemberService memberService;
 	
 	@GetMapping(value = "join")
-	public ModelAndView setMemberAdd() throws Exception {
+	public ModelAndView setMemberAdd(@ModelAttribute MemberVO memberVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("member/join");
@@ -36,8 +41,13 @@ public class MemberController {
 	}
 	
 	@PostMapping(value = "join")
-	public ModelAndView setMemberAdd(MemberVO memberVO) throws Exception {
+	public ModelAndView setMemberAdd(@Valid MemberVO memberVO, BindingResult bindingResult) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		if(bindingResult.hasErrors()) {
+			mv.setViewName("member/join");
+			return mv;
+		}
 		
 		int result = memberService.setMemberAdd(memberVO);
 		

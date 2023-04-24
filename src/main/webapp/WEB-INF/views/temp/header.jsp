@@ -36,6 +36,9 @@
                             	<li class="nav-item"><a class="nav-link" href="/member/logout">Logout</a></li>
                             	<li class="nav-item"><a class="nav-link" href="/member/mypage">Mypage</a></li>
                             </c:if>
+                            
+                            <li class="nav-item"><a class="nav-link" href="/?lang=ko">ko</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/?lang=en">en</a></li>
                         </ul>
                     </div>
                 </div>

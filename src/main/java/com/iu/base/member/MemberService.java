@@ -2,12 +2,27 @@ package com.iu.base.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 @Service
 public class MemberService {
 
 	@Autowired
 	private MemberDAO memberDAO;
+	
+	// 패스워드가 일치하는지 검증하는 메서드
+	public boolean memberCheck(MemberVO memberVO, BindingResult bindingResult) throws Exception {
+		boolean result = false;
+		
+		result = bindingResult.hasErrors();
+		
+		if(!memberVO.getPassWord().equals(memberVO.getPassWordCheck())) {
+			result = true;
+			bindingResult.rejectValue("passWordCheck", "member.passWord.notEqual");
+		}
+		
+		return result;
+	}
 	
 	public int setMemberAdd(MemberVO memberVO) throws Exception {
 		memberVO.setEnabled(true);

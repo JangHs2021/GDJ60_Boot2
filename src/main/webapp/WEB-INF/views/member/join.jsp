@@ -51,10 +51,10 @@
                                     </div>
                                     <!-- PassWord input -->
                                     <div class="form-floating mb-3">
-                                    	<form:password path="passWord" id="passWord" cssClass="form-control"/>
+                                    	<form:password path="passWordCheck" id="passWordCheck" cssClass="form-control"/>
                                         <!-- <input class="form-control" id="passWordCheck" name="passWordCheck" type="password"/> -->
-                                        <label for="passWordCheck">PassWord Check</label>
-                                        <form:errors path="passWord"></form:errors>
+                                        <label for="passWordCheck">PassWord</label>
+                                        <form:errors path="passWordCheck"></form:errors>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
                                     <!-- Name input -->

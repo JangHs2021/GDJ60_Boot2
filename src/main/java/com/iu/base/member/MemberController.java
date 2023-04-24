@@ -44,7 +44,9 @@ public class MemberController {
 	public ModelAndView setMemberAdd(@Valid MemberVO memberVO, BindingResult bindingResult) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		if(bindingResult.hasErrors()) {
+		boolean check = memberService.memberCheck(memberVO, bindingResult);
+		
+		if(check) {
 			mv.setViewName("member/join");
 			return mv;
 		}

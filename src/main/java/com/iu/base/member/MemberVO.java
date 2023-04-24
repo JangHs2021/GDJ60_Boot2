@@ -18,6 +18,8 @@ public class MemberVO {
 	@NotBlank
 	@Size(min = 4, max = 12)
 	private String passWord;
+	
+	private String passWordCheck;
 	@NotBlank
 	private String name;
 	@NotBlank

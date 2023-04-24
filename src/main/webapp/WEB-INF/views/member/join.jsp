@@ -76,6 +76,7 @@
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="birth" name="birth" type="date" placeholder="Enter Birth..." data-sb-validations="required" />
                                         <label for="birth">Birth</label>
+                                        <form:errors path="birth"></form:errors>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
                                     <!-- Submit Button -->

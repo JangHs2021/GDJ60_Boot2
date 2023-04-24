@@ -3,6 +3,7 @@ package com.iu.base.member;
 import java.sql.Date;
 import java.util.List;
 
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -24,6 +25,7 @@ public class MemberVO {
 	private String name;
 	@NotBlank
 	private String email;
+	@Future
 	private Date birth;
 	private boolean enabled;
 	private List<RoleVO> roleVOs;

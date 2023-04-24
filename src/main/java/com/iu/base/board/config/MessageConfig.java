@@ -14,7 +14,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 public class MessageConfig implements WebMvcConfigurer{
 
 	@Bean
-	public LocaleResolver getLocale() {
+	public LocaleResolver localeResolver() {
 		// 1. session
 		SessionLocaleResolver sessionLocaleResolver = new SessionLocaleResolver();
 		sessionLocaleResolver.setDefaultLocale(Locale.KOREA);

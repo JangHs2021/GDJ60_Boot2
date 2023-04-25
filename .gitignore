@@ -34,3 +34,4 @@ build/
 
 ### DB Ignore ###
 application-dev.properties
+application-prod.properties

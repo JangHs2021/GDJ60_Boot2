@@ -66,13 +66,19 @@ public class NoticeController {
 //			log.info("OriName : {} Size : {}", multipartFile.getOriginalFilename(), multipartFile.getSize());
 //		}
 		
+		log.error("=========== {} ===========", boardVO.getSubVO().getSubName());
+		
+		for(String n : boardVO.getNames()) {
+			log.error("=========== {} ===========", n);
+		}
+		
 		if(bindingResult.hasErrors()) {
 			log.warn("================ 검증 실패 ================");
 			mv.setViewName("board/add");
 			return mv;
 		}
 		
-		int result = noticeService.setInsert(boardVO, boardFiles);
+		// int result = noticeService.setInsert(boardVO, boardFiles);
 		
 		mv.setViewName("redirect:./list");
 		

@@ -100,6 +100,7 @@
                                     </div>
                                 </div>
                             </section>
+                            <a class="btn btn-primary" href="./delete?num=${boardVO.num}">글 삭제</a>
                         </div>
                     </div>
                 </div>

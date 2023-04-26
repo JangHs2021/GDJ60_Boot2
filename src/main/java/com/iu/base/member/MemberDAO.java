@@ -18,4 +18,8 @@ public interface MemberDAO {
 	public List<MemberVO> getMembers() throws Exception;
 	
 	public int getMemberLogout(MemberVO memberVO) throws Exception;
+	
+	public int setEnabled() throws Exception;
+	
+	public List<MemberVO> getBirth() throws Exception;
 }

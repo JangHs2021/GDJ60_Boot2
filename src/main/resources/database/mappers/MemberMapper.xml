@@ -54,4 +54,19 @@
   		UPDATE MEMBER SET LASTTIME = now()
   		WHERE USERNAME = #{userName}
   	</update>
+  	
+  	<update id="setEnabled">
+	  	<![CDATA[
+	  		UPDATE MEMBER SET ENABLED = 0
+			WHERE LASTTIME <= now() - INTERVAL 3 DAY
+	  	]]>
+  	</update>
+  	
+  	<select id="getBirth" resultType="MemberVO">
+  		SELECT NAME 
+		FROM MEMBER
+		WHERE MONTH(BIRTH) = MONTH(NOW())
+		AND DAY(BIRTH) = DAY(NOW())
+  	</select>
+  	
   </mapper>

@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.iu.base.board.BoardFileVO;
 import com.iu.base.board.BoardVO;
 import com.iu.base.util.Pager;
+import com.iu.base.util.TestSchedule;
 
 import lombok.extern.slf4j.Slf4j;
 

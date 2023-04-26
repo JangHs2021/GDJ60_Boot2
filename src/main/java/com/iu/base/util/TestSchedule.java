@@ -2,7 +2,6 @@ package com.iu.base.util;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -24,19 +23,26 @@ public class TestSchedule {
 	
 	@Autowired
 	private NoticeDAO noticeDAO;
+	
+	@Autowired
+	private EmailService emailService;
 
 	@Scheduled(cron = "10 * * * * *")
-	public void test() throws Exception {
+	public void test(String to, String subject, String text) throws Exception {
 		log.error("============ 반복중 ============");
 		
 		List<MemberVO> ar = memberDAO.getBirth();
+//		
+//		BoardVO boardVO = new BoardVO();
+//		boardVO.setTitle("이달의 생일");
+//		boardVO.setWriter("관리자");
+//		
+//		boardVO.setContent("생일 축하 합니다" + ar.get(0).getName() + "," + ar.get(1).getName());
+//		
+//		int result = noticeDAO.setInsert(boardVO);
 		
-		BoardVO boardVO = new BoardVO();
-		boardVO.setTitle("이달의 생일");
-		boardVO.setWriter("관리자");
-		
-		boardVO.setContent("생일 축하 합니다" + ar.get(0).getName() + "," + ar.get(1).getName());
-		
-		int result = noticeDAO.setInsert(boardVO);
+		for(MemberVO memberVO : ar) {
+			emailService.sendEmail(memberVO.getEmail(), "생일 축하 합니다", "<h1>생일 축하</h1>");
+		}
 	}
 }

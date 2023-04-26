@@ -60,4 +60,8 @@ public class MemberService {
 	public MemberVO idDuplicateCheck(MemberVO memberVO) throws Exception {
 		return memberDAO.idDuplicateCheck(memberVO);
 	}
+	
+	public int getMemberLogout(MemberVO memberVO) throws Exception {
+		return memberDAO.getMemberLogout(memberVO);
+	}
 }

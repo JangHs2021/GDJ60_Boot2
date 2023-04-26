@@ -46,4 +46,12 @@
   		SELECT USERNAME FROM MEMBER WHERE USERNAME = #{userName}
   	</select>
   	
+  	<select id="getMembers" resultType="MemberVO">
+  		SELECT * FROM MEMBER
+  	</select>
+  	
+  	<update id="getMemberLogout" parameterType="MemberVO">
+  		UPDATE MEMBER SET LASTTIME = now()
+  		WHERE USERNAME = #{userName}
+  	</update>
   </mapper>

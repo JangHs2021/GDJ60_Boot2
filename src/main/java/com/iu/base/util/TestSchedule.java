@@ -7,29 +7,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.iu.base.board.BoardVO;
-import com.iu.base.board.notice.NoticeDAO;
+
+//import com.iu.base.board.notice.NoticeDAO;
 import com.iu.base.member.MemberDAO;
 import com.iu.base.member.MemberVO;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @Component
 public class TestSchedule {
 	
 	@Autowired
 	private MemberDAO memberDAO;
 	
-	@Autowired
-	private NoticeDAO noticeDAO;
+//	@Autowired
+//	private NoticeDAO noticeDAO;
 	
 	@Autowired
 	private EmailService emailService;
 
 	@Scheduled(cron = "10 * * * * *")
-	public void birthTest(String to, String subject, String text) throws Exception {
-		log.error("============ 반복중 ============");
+	public void birthTest() throws Exception {
 		
 		List<MemberVO> ar = memberDAO.getBirth();
 //		

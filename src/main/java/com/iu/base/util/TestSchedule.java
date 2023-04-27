@@ -28,7 +28,7 @@ public class TestSchedule {
 	private EmailService emailService;
 
 	@Scheduled(cron = "10 * * * * *")
-	public void test(String to, String subject, String text) throws Exception {
+	public void birthTest(String to, String subject, String text) throws Exception {
 		log.error("============ 반복중 ============");
 		
 		List<MemberVO> ar = memberDAO.getBirth();

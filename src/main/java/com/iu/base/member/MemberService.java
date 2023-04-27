@@ -1,14 +1,26 @@
 package com.iu.base.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
-public class MemberService {
+@Slf4j
+@Transactional(rollbackFor = Exception.class)
+public class MemberService implements UserDetailsService {
 
 	@Autowired
 	private MemberDAO memberDAO;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	// 패스워드가 일치하는지 검증하는 메서드
 	public boolean memberCheck(MemberVO memberVO, BindingResult bindingResult) throws Exception {
@@ -16,22 +28,24 @@ public class MemberService {
 		
 		result = bindingResult.hasErrors();
 		
-		if(!memberVO.getPassWord().equals(memberVO.getPassWordCheck())) {
+		if(!memberVO.getPassword().equals(memberVO.getPasswordCheck())) {
 			result = true;
-			bindingResult.rejectValue("passWordCheck", "member.passWord.notEqual");
+			bindingResult.rejectValue("passwordCheck", "member.passWord.notEqual");
 		}
 		
 		MemberVO idcheck = memberDAO.idDuplicateCheck(memberVO);
 		
 		if(idcheck != null) {
 			result = true;
-			bindingResult.rejectValue("userName", "member.userName.Equal");
+			bindingResult.rejectValue("username", "member.userName.Equal");
 		}
 		return result;
 	}
 	
 	public int setMemberAdd(MemberVO memberVO) throws Exception {
-		memberVO.setEnabled(true);
+//		memberVO.setEnabled(true);
+		memberVO.setPassword(passwordEncoder.encode(memberVO.getPassword()));
+		
 		int result = memberDAO.setMemberAdd(memberVO);
 		
 		result = memberDAO.setMemberRoleAdd(memberVO);
@@ -63,5 +77,19 @@ public class MemberService {
 	
 	public int getMemberLogout(MemberVO memberVO) throws Exception {
 		return memberDAO.getMemberLogout(memberVO);
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		log.error("=================== Spring Security Login ==================");
+		log.error("=================== {} =================", username);
+		MemberVO memberVO = new MemberVO();
+		memberVO.setUsername(username);
+		try {
+			memberVO = memberDAO.getMemberLogin(memberVO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return memberVO;
 	}
 }

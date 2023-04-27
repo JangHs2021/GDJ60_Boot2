@@ -33,28 +33,28 @@
                         <div class="row gx-5 justify-content-center">
                             <div class="col-lg-8 col-xl-6">
                                 <form:form id="contactForm" modelAttribute="memberVO" action="./join" method="post" data-sb-form-api-token="API_TOKEN"> 
-                                    <!-- UserName input -->
+                                    <!-- username input -->
                                     <div class="form-floating mb-3">
-                                    	<form:input path="userName" id="userName" cssClass="form-control"/>
-                                        <!-- <input class="form-control" id="userName" name="userName" type="text" placeholder="Enter UserName..." required="required" data-sb-validations="required" /> -->
-                                        <label for="userName">UserName</label>
-                                        <form:errors path="userName"></form:errors>
+                                    	<form:input path="username" id="username" cssClass="form-control"/>
+                                        <!-- <input class="form-control" id="username" name="username" type="text" placeholder="Enter username..." required="required" data-sb-validations="required" /> -->
+                                        <label for="username">username</label>
+                                        <form:errors path="username"></form:errors>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
-                                    <!-- PassWord input -->
+                                    <!-- password input -->
                                     <div class="form-floating mb-3">
-                                   		<form:password path="passWord" id="passWord" cssClass="form-control"/>
-                                        <!-- <input class="form-control" id="passWord" name="passWord" type="password" placeholder="Enter PassWord..." data-sb-validations="required" /> -->
-                                        <label for="passWord">PassWord</label>
-                                        <form:errors path="passWord"></form:errors>
+                                   		<form:password path="password" id="password" cssClass="form-control"/>
+                                        <!-- <input class="form-control" id="password" name="password" type="password" placeholder="Enter password..." data-sb-validations="required" /> -->
+                                        <label for="password">password</label>
+                                        <form:errors path="password"></form:errors>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
-                                    <!-- PassWord input -->
+                                    <!-- password input -->
                                     <div class="form-floating mb-3">
-                                    	<form:password path="passWordCheck" id="passWordCheck" cssClass="form-control"/>
-                                        <!-- <input class="form-control" id="passWordCheck" name="passWordCheck" type="password"/> -->
-                                        <label for="passWordCheck">PassWord</label>
-                                        <form:errors path="passWordCheck"></form:errors>
+                                    	<form:password path="passwordCheck" id="passwordCheck" cssClass="form-control"/>
+                                        <!-- <input class="form-control" id="passwordCheck" name="passwordCheck" type="password"/> -->
+                                        <label for="passwordCheck">password</label>
+                                        <form:errors path="passwordCheck"></form:errors>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
                                     <!-- Name input -->

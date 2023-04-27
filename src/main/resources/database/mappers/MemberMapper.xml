@@ -7,12 +7,12 @@
   	
   	<insert id="setMemberAdd" parameterType="MemberVO">
   		INSERT INTO MEMBER
-  		VALUES (#{userName}, #{passWord}, #{name}, #{email}, #{birth}, #{enabled})
+  		VALUES (#{username}, #{password}, #{name}, #{email}, #{birth}, 1, now())
   	</insert>
   	
   	<insert id="setMemberRoleAdd" parameterType="MemberVO">
   		INSERT INTO MEMBER_ROLE
-  		VALUES (#{userName}, 3)
+  		VALUES (#{username}, 3)
   	</insert>
   	
   	<select id="getMemberLogin" parameterType="MemberVO" resultMap="getMemberLoginResult">
@@ -21,20 +21,19 @@
 			MEMBER
 			INNER JOIN
 			MEMBER_ROLE 
-			USING(USERNAME)
+			USING(username)
 			INNER JOIN 
 			ROLE
 			USING(NUM)
-		WHERE USERNAME = #{userName} AND PASSWORD = #{passWord}
+		WHERE USERNAME = #{username}
   	</select>
   	
   	<resultMap type="MemberVO" id="getMemberLoginResult">
-  		<id column="USERNAME" property="userName"/>
-  		<result column="PASSWORD" property="passWord"/>
+  		<id column="USERNAME" property="username"/>
+  		<result column="PASSWORD" property="password"/>
   		<result column="NAME" property="name"/>
   		<result column="EMAIL" property="email"/>
   		<result column="BIRTH" property="birth"/>
-  		<result column="ENABLED" property="enabled"/>  
   		
   		<collection property="roleVOs" javaType="List" ofType="RoleVO">
   			<id column="NUM" property="num"/>
@@ -43,7 +42,7 @@
   	</resultMap>
   	
   	<select id="idDuplicateCheck" resultType="MemberVO" parameterType="MemberVO">
-  		SELECT USERNAME FROM MEMBER WHERE USERNAME = #{userName}
+  		SELECT USERNAME FROM MEMBER WHERE USERNAME = #{username}
   	</select>
   	
   	<select id="getMembers" resultType="MemberVO">
@@ -52,7 +51,7 @@
   	
   	<update id="getMemberLogout" parameterType="MemberVO">
   		UPDATE MEMBER SET LASTTIME = now()
-  		WHERE USERNAME = #{userName}
+  		WHERE USERNAME = #{username}
   	</update>
   	
   	<update id="setEnabled">

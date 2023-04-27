@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -42,9 +43,15 @@
                     <div class="row gx-5">
                         <div class="col-lg-4 mb-5 mb-lg-0">
                         	<h1>
+                        	
+                        	
                         		<%-- <c:if test="${not empty member}"> --%>
                         			<spring:message code="loginSuccess" text="없는 message" arguments="${member.userName},${member.name}" argumentSeparator=","></spring:message>
                         		<%-- </c:if> --%>
+                        		<sec:authorize access="isAuthenticated()">로그인 성공</sec:authorize>
+                        		<sec:authorize access="!isAuthenticated()">로그인 전</sec:authorize>
+                        		
+                        		
                         	</h1>
                         	<h2 class="fw-bolder mb-0">A better way to start building.</h2>
                         </div>

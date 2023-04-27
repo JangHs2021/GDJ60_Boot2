@@ -34,13 +34,13 @@
                                 <form id="contactForm" action="./login" method="post" data-sb-form-api-token="API_TOKEN">
                                     <!-- UserName input-->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="userName" name="userName" type="text" placeholder="Enter UserName..." data-sb-validations="required" />
+                                        <input class="form-control" id="userName" name="username" type="text" placeholder="Enter UserName..." data-sb-validations="required" />
                                         <label for="userName">UserName</label>
                                         <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
                                     </div>
                                     <!-- PassWord input-->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="passWord" name="passWord" type="password" placeholder="Enter PassWord..." data-sb-validations="required" />
+                                        <input class="form-control" id="passWord" name="password" type="password" placeholder="Enter PassWord..." data-sb-validations="required" />
                                         <label for="passWord">PassWord</label>
                                     </div>
                                                          

@@ -31,6 +31,10 @@
                         </div>
                         <div class="row gx-5 justify-content-center">
                             <div class="col-lg-8 col-xl-6">
+                            	<c:if test="${not empty param.errorMessage}">
+                            		<h1>${param.errorMessage}</h1>
+                            	</c:if>
+                            
                                 <form id="contactForm" action="./login" method="post" data-sb-form-api-token="API_TOKEN">
                                     <!-- UserName input-->
                                     <div class="form-floating mb-3">

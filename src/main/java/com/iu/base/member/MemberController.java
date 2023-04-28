@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticatedPrincipal;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextImpl;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,8 +36,22 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	@GetMapping(value = "info")
 	public void info(HttpSession session) {
+		String pw = "qwer1234";
+		MemberVO memberVO = (MemberVO) memberService.loadUserByUsername("wkdgustj02");
+		
+		log.error("============== {} ============", memberVO.getPassword());
+		log.error("============== {} ============", passwordEncoder.encode(pw));
+		log.error("============== {} ============", memberVO.getPassword().equals(passwordEncoder.encode(pw)));
+		
+		// encode 된 패스워드는 passwordEncoder의 matches로 DB에 암호화된 패스워드와 비교
+		boolean check = passwordEncoder.matches(pw, memberVO.getPassword());
+		log.error("============== {} ============", check);
+		
 		log.error("================== Login Info =================");
 //		Enumeration<String> names = session.getAttributeNames();
 //		while(names.hasMoreElements()) {

@@ -16,6 +16,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
+import com.iu.base.member.MemberService;
+import com.iu.base.member.MemberSocialService;
 import com.iu.base.security.UserLoginFailHandler;
 import com.iu.base.security.UserLogoutSuccessHandler;
 import com.iu.base.security.UserSuccessHandler;
@@ -23,6 +25,9 @@ import com.iu.base.security.UserSuccessHandler;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+	
+	@Autowired
+	private MemberSocialService memberSocialService;
 	
 	@Bean
 	WebSecurityCustomizer webSecurityConfig() {
@@ -38,10 +43,11 @@ public class SecurityConfig {
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity
-				.cors()
-				.and()
-				.csrf()
-				.disable()
+					.cors()
+//					.and()
+//					.csrf()
+					.disable()
+			
 				.authorizeRequests()
 					// URL과 권한 매칭
 					.antMatchers("/").permitAll()
@@ -70,7 +76,15 @@ public class SecurityConfig {
 					.invalidateHttpSession(true)
 					.deleteCookies("JSESSIONID")
 					.permitAll()
-				;
+					.and()
+//				.sessionManagement()
+//					.maximumSessions(1) // 최대 허용 가능한 session의 수, -1 : 무제한
+//					.maxSessionsPreventsLogin(false) // false : 이전 사용자 session을 만료, true : 새로운 사용자 인증 실패
+//					;
+				.oauth2Login()
+					.userInfoEndpoint()
+					.userService(memberSocialService)
+					;
 		return httpSecurity.build();
 	}
 	

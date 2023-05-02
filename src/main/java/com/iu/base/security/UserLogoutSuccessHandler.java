@@ -41,13 +41,4 @@ public class UserLogoutSuccessHandler implements LogoutSuccessHandler {
 		
 		// response.sendRedirect("https://kauth.kakao.com/oauth/logout?client_id="+restKey+"&logout_redirect_uri=http://localhost/");
 	}
-	
-//	private void simpleLogout() {
-//		RestTemplate restTemplate = new RestTemplate();
-//		
-//		// header
-//		HttpHeaders headers = new HttpHeaders();
-//		headers.add("Authorization", "KakaoAK"+adminKey);
-//		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-//	}
 }

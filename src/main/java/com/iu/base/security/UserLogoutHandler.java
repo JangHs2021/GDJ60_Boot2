@@ -51,7 +51,7 @@ public class UserLogoutHandler implements LogoutHandler {
 		
 		// header
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Authorization", "KakaoAK"+adminKey);
+		headers.add("Authorization", "KakaoAK "+adminKey);
 		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 		
 		// parameter

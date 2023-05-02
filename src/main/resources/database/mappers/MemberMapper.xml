@@ -50,7 +50,7 @@
   		SELECT * FROM MEMBER
   	</select>
   	
-  	<update id="getMemberLogout" parameterType="MemberVO">
+  	<update id="setLastTimeUpdate" parameterType="MemberVO">
   		UPDATE MEMBER SET LASTTIME = now()
   		WHERE USERNAME = #{username}
   	</update>

@@ -109,45 +109,39 @@ public class MemberController {
 		return mv;
 	}
 	
-	@PostMapping(value = "login")
-	public ModelAndView getMemberLogin(MemberVO memberVO, HttpSession session)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		
-//		if(remember != null && remember.equals("remember")) {
-//			Cookie cookie = new Cookie("rememberId", memberVO.getUserName());
-//			cookie.setMaxAge(-1);
-//			response.addCookie(cookie);	
-//		} else {
-//			Cookie cookie = new Cookie("rememberId", "");
-//			cookie.setMaxAge(0);
-//			response.addCookie(cookie);
+//	@PostMapping(value = "login")
+//	public ModelAndView getMemberLogin(MemberVO memberVO, HttpSession session)throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		
+////		if(remember != null && remember.equals("remember")) {
+////			Cookie cookie = new Cookie("rememberId", memberVO.getUserName());
+////			cookie.setMaxAge(-1);
+////			response.addCookie(cookie);	
+////		} else {
+////			Cookie cookie = new Cookie("rememberId", "");
+////			cookie.setMaxAge(0);
+////			response.addCookie(cookie);
+////		}
+//		
+//		memberVO = memberService.getMemberLogin(memberVO);
+//		mv.setViewName("redirect:./login");
+//		
+//		if(memberVO != null) {
+//			session.setAttribute("member", memberVO);
+//			mv.setViewName("redirect:../");
 //		}
-		
-		memberVO = memberService.getMemberLogin(memberVO);
-		mv.setViewName("redirect:./login");
-		
-		if(memberVO != null) {
-			session.setAttribute("member", memberVO);
-			mv.setViewName("redirect:../");
-		}
-		
-		return mv;
-	}
+//		
+//		return mv;
+//	}
 	
-	@GetMapping(value = "logout")
-	public ModelAndView getMemberLogout(HttpSession session)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		
-		MemberVO memberVO = (MemberVO)session.getAttribute("member");
-		
-		int result = memberService.getMemberLogout(memberVO);
-		
-		session.invalidate();
-		
-		mv.setViewName("redirect:../");
-		
-		return mv;
-	}
+//	@GetMapping(value = "socialLogout")
+//	public ModelAndView getMemberLogout(HttpSession session)throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		
+//		mv.setViewName("redirect:../");
+//		
+//		return mv;
+//	}
 	
 	@GetMapping(value = "mypage")
 	public ModelAndView getMemberPage(HttpSession session) throws Exception {

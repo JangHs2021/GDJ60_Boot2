@@ -79,8 +79,8 @@ public class MemberService extends DefaultOAuth2UserService implements UserDetai
 		return memberDAO.idDuplicateCheck(memberVO);
 	}
 	
-	public int getMemberLogout(MemberVO memberVO) throws Exception {
-		return memberDAO.getMemberLogout(memberVO);
+	public int setLastTimeUpdate(MemberVO memberVO) throws Exception {
+		return memberDAO.setLastTimeUpdate(memberVO);
 	}
 
 	@Override

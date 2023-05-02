@@ -19,12 +19,19 @@ import org.springframework.security.web.authentication.logout.LogoutSuccessHandl
 import com.iu.base.member.MemberService;
 import com.iu.base.member.MemberSocialService;
 import com.iu.base.security.UserLoginFailHandler;
+import com.iu.base.security.UserLogoutHandler;
 import com.iu.base.security.UserLogoutSuccessHandler;
 import com.iu.base.security.UserSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+	
+	@Autowired
+	private UserLogoutHandler userLogoutHandler;
+	
+	@Autowired
+	private LogoutSuccessHandler logoutSuccessHandler;
 	
 	@Autowired
 	private MemberSocialService memberSocialService;
@@ -44,8 +51,8 @@ public class SecurityConfig {
 	SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity
 					.cors()
-//					.and()
-//					.csrf()
+					.and()
+					.csrf()
 					.disable()
 			
 				.authorizeRequests()
@@ -72,18 +79,18 @@ public class SecurityConfig {
 				.logout()
 					.logoutUrl("/member/logout")
 					// .logoutSuccessUrl("/")
-					.logoutSuccessHandler(new UserLogoutSuccessHandler())
+					.addLogoutHandler(userLogoutHandler)
+					.logoutSuccessHandler(logoutSuccessHandler)
 					.invalidateHttpSession(true)
 					.deleteCookies("JSESSIONID")
 					.permitAll()
 					.and()
-//				.sessionManagement()
-//					.maximumSessions(1) // 최대 허용 가능한 session의 수, -1 : 무제한
-//					.maxSessionsPreventsLogin(false) // false : 이전 사용자 session을 만료, true : 새로운 사용자 인증 실패
-//					;
 				.oauth2Login()
 					.userInfoEndpoint()
 					.userService(memberSocialService)
+//				.sessionManagement()
+//					.maximumSessions(1) // 최대 허용 가능한 session의 수, -1 : 무제한
+//					.maxSessionsPreventsLogin(false) // false : 이전 사용자 session을 만료, true : 새로운 사용자 인증 실패
 					;
 		return httpSecurity.build();
 	}
